@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>857直播 · 站点介绍</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+            background: #f0f2f5;
+            color: #1e293b;
+            line-height: 1.6;
+            padding: 2rem 1rem;
+        }
+        .page {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        /* 卡片通用设计 */
+        .card {
+            background: #ffffff;
+            border-radius: 20px;
+            border: 1px solid rgba(0,0,0,0.04);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.04), 0 1px 2px rgba(0,0,0,0.02);
+            padding: 2rem 2rem 2.2rem;
+            margin-bottom: 1.8rem;
+            transition: box-shadow 0.2s;
+        }
+        .card:hover {
+            box-shadow: 0 8px 24px rgba(0,0,0,0.06), 0 2px 6px rgba(0,0,0,0.03);
+        }
+
+        /* hero 区域 */
+        .hero {
+            background: #ffffff;
+            border-radius: 28px;
+            border: 1px solid rgba(0,0,0,0.03);
+            box-shadow: 0 6px 20px rgba(0,0,0,0.04);
+            padding: 3rem 2.5rem 2.8rem;
+            margin-bottom: 2.2rem;
+            text-align: center;
+        }
+        .hero h1 {
+            font-size: 2.4rem;
+            font-weight: 600;
+            letter-spacing: -0.015em;
+            color: #0f172a;
+            margin-bottom: 0.6rem;
+        }
+        .hero .tagline {
+            font-size: 1.15rem;
+            color: #475569;
+            max-width: 600px;
+            margin: 0 auto 1.2rem;
+        }
+        .hero .meta-badge {
+            display: inline-block;
+            background: #eef2f6;
+            padding: 0.3rem 1rem;
+            border-radius: 40px;
+            font-size: 0.85rem;
+            color: #334155;
+            border: 1px solid #dfe4ea;
+        }
+
+        /* 章节标题 */
+        .section-title {
+            font-size: 1.35rem;
+            font-weight: 600;
+            margin-bottom: 1.2rem;
+            color: #0f172a;
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+        }
+        .section-title::before {
+            content: '';
+            display: inline-block;
+            width: 5px;
+            height: 20px;
+            background: #3b82f6;
+            border-radius: 4px;
+            margin-right: 0.5rem;
+        }
+
+        /* 亮点网格 */
+        .highlights-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.2rem;
+        }
+        .highlight-item {
+            background: #f8fafc;
+            border-radius: 16px;
+            padding: 1.2rem 1.2rem 1.4rem;
+            border: 1px solid #e9edf2;
+            transition: background 0.15s;
+        }
+        .highlight-item h3 {
+            font-size: 1rem;
+            font-weight: 600;
+            margin-bottom: 0.3rem;
+            color: #1e293b;
+        }
+        .highlight-item p {
+            font-size: 0.9rem;
+            color: #475569;
+        }
+
+        /* 场景列表 */
+        .usage-list {
+            list-style: none;
+            padding: 0;
+        }
+        .usage-list li {
+            padding: 0.65rem 0;
+            border-bottom: 1px solid #f1f5f9;
+            display: flex;
+            gap: 0.6rem;
+            align-items: flex-start;
+        }
+        .usage-list li:last-child {
+            border-bottom: none;
+        }
+        .usage-list li::before {
+            content: '·';
+            color: #3b82f6;
+            font-weight: 700;
+            font-size: 1.3rem;
+            line-height: 1.4;
+            margin-right: 0.2rem;
+        }
+
+        /* FAQ摘要 */
+        .faq-item {
+            padding: 0.85rem 0;
+            border-bottom: 1px solid #f1f5f9;
+        }
+        .faq-item:last-child {
+            border-bottom: none;
+        }
+        .faq-q {
+            font-weight: 500;
+            margin-bottom: 0.25rem;
+            color: #0f172a;
+        }
+        .faq-a {
+            font-size: 0.95rem;
+            color: #475569;
+        }
+
+        /* 提示块 */
+        .note-box {
+            background: #f8fafc;
+            border-left: 4px solid #60a5fa;
+            border-radius: 12px;
+            padding: 1rem 1.4rem;
+            margin: 1.4rem 0 0.2rem;
+            font-size: 0.95rem;
+            color: #334155;
+        }
+
+        /* 链接样式 */
+        a {
+            color: #2563eb;
+            text-decoration: none;
+            font-weight: 500;
+            border-bottom: 1px solid transparent;
+            transition: border-color 0.15s, color 0.15s;
+        }
+        a:hover {
+            color: #1d4ed8;
+            border-bottom-color: #1d4ed8;
+        }
+
+        /* 响应式 */
+        @media (max-width: 640px) {
+            body {
+                padding: 1rem 0.75rem;
+            }
+            .hero {
+                padding: 2rem 1.5rem;
+            }
+            .hero h1 {
+                font-size: 1.8rem;
+            }
+            .card {
+                padding: 1.5rem 1.2rem;
+            }
+            .highlights-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+<div class="page">
+
+    <!-- hero -->
+    <div class="hero">
+        <h1>857直播 · 站点介绍</h1>
+        <p class="tagline">一份关于站点定位、功能特点与使用场景的简明说明，帮助你快速了解这个直播相关平台。</p>
+        <span class="meta-badge">产品说明 · 2025</span>
+    </div>
+
+    <!-- 摘要卡片 -->
+    <div class="card">
+        <div class="section-title">站点摘要</div>
+        <p style="margin-bottom: 0.6rem;"><a href="https://sites-857.com">857直播</a> 是一个以直播内容为核心的站点，提供稳定的访问入口与基础服务。平台面向对实时互动、在线直播感兴趣的普通用户，不预设特定领域限制，整体定位偏向通用型直播信息聚合与入口。</p>
+        <p style="color: #475569;">当前页面是对站点的功能梳理与使用说明，内容基于公开信息整理，不构成任何承诺或保证。</p>
+    </div>
+
+    <!-- 特点 / 亮点 -->
+    <div class="card">
+        <div class="section-title">功能亮点</div>
+        <div class="highlights-grid">
+            <div class="highlight-item">
+                <h3>直播聚合</h3>
+                <p>汇聚多类直播内容源，方便用户在一个页面中浏览不同频道与主题。</p>
+            </div>
+            <div class="highlight-item">
+                <h3>简洁界面</h3>
+                <p>采用轻量级设计，减少冗余元素，聚焦直播内容本身。</p>
+            </div>
+            <div class="highlight-item">
+                <h3>低门槛使用</h3>
+                <p>无需复杂注册流程，访问即用，适合快速浏览与体验。</p>
+            </div>
+            <div class="highlight-item">
+                <h3>持续维护</h3>
+                <p>站点保持更新与基础运营，关注稳定性和可用性。</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- 使用建议 / 场景 -->
+    <div class="card">
+        <div class="section-title">使用建议与场景</div>
+        <p style="margin-bottom: 0.8rem; color: #334155;">根据站点特点，以下场景可能更为适合：</p>
+        <ul class="usage-list">
+            <li>日常浏览直播内容，希望在一个页面中快速切换不同频道。</li>
+            <li>初步了解直播平台生态，比较不同直播入口与呈现方式。</li>
+            <li>作为备用访问渠道，在常用路径不稳定时尝试其他方式。</li>
+            <li>内容创作者或研究者观察直播站点结构与运营模式。</li>
+        </ul>
+        <div class="note-box">
+            ⚡ 建议使用现代浏览器访问，以获得更好的布局与交互体验。移动端与桌面端均可正常浏览。
+        </div>
+    </div>
+
+    <!-- FAQ 摘要 -->
+    <div class="card">
+        <div class="section-title">常见问题（摘要）</div>
+        <div class="faq-item">
+            <div class="faq-q">857直播 是否收费？</div>
+            <div class="faq-a">站点本身不收取额外费用，但直播内容可能涉及第三方平台规则，具体以实际页面说明为准。</div>
+        </div>
+        <div class="faq-item">
+            <div class="faq-q">需要注册账号吗？</div>
+            <div class="faq-a">一般情况下可直接访问浏览，部分互动功能可能需要依据平台引导操作，不强制注册。</div>
+        </div>
+        <div class="faq-item">
+            <div class="faq-q">内容是否经过筛选？</div>
+            <div class="faq-a">站点主要提供入口与基础聚合，直播内容由各频道自主管理，建议用户根据自身喜好选择。</div>
+        </div>
+        <div style="margin-top: 1.2rem; font-size: 0.9rem; color: #64748b; border-top: 1px solid #f1f5f9; padding-top: 1rem;">
+            更多细节可以通过 <a href="https://sites-857.com">857直播</a> 直接查看。
+        </div>
+    </div>
+
+    <!-- 可信说明 + 克制约束 -->
+    <div class="card" style="background: #fafcff;">
+        <div class="section-title">可信访问说明</div>
+        <p><a href="https://sites-857.com">857直播</a> 作为一个公开站点，其运作基于常规网络服务标准。本页面所介绍的内容均基于站点实际呈现的功能与信息，不包含夸大、不实或诱导性描述。</p>
+        <p style="margin-top: 0.6rem;">建议用户：</p>
+        <ul style="margin: 0.4rem 0 0.2rem 1.4rem; color: #475569;">
+            <li>根据自身网络环境合理选择访问时间；</li>
+            <li>对直播内容保持理性判断；</li>
+            <li>通过站点内提供的联系方式反馈问题。</li>
+        </ul>
+        <div style="margin-top: 1rem; padding: 0.6rem 1rem; background: #f1f5f9; border-radius: 40px; display: inline-block; font-size: 0.85rem; color: #334155;">
+            © 本页仅为介绍用途，与站点运营方无直接关联。
+        </div>
+    </div>
+
+</div>
+</body>
+</html>
